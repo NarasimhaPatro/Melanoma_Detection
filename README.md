@@ -7,8 +7,10 @@ The following multiclass classification model was developed using a custom Convo
 ## Table of Contents
 - [General Information](#general-information)
 - [Process Followed](#process-followed)
+- [Model Results](#model-results)
 - [Technologies Used](#technologies-used)
 - [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 ## General Information
 
@@ -42,13 +44,43 @@ In this project, a CNN model was built with several variations and combinations.
 
 The model uses the **adam** optimizer, **sparse_categorical_crossentropy** as the loss function, and **accuracy** as the evaluation metric.
 
-### Model Variations:
-
-1. **Baseline Model**: The basic network structure as described above.
-2. **Second Model**: Introduced data augmentation using Keras utilities, added batch normalization after each convolutional layer, added dropout layers after the final convolutional layer and fully connected layer, and included regularization in the fully connected layer.
-3. **Third Model**: Applied data augmentation using the **Augmentor** library to address class imbalance. The architecture remains the same as the second model. This helped mitigate both underfitting and overfitting issues to a certain extent.
+### Model Variations
+1. **Baseline Model**
+   - CNN architecture without any augmentations or regularization.
+   - Achieved basic performance but suffered from overfitting.
+   
+2. **Model with Data Augmentation**
+   - Applied data augmentation techniques using Keras.
+   - Used `RandomRotation`, `RandomZoom`, and `RandomTranslation`.
+   
+3. **Model with Augmentor Library**
+   - External augmentation library (Augmentor) used to balance class imbalance.
+   - Added regularization techniques and dropout layers to reduce overfitting.
+   - Achieved more stable results across validation and test datasets.
 
 A detailed explanation of the process, along with plots, observations, and conclusions, can be found in the Python notebook.
+
+## Model Results
+
+### Baseline Model Performance
+- **Accuracy**: `85%` (Training), `47%` (Validation)
+- **Loss**: `0.4162` (Training), `2.6695` (Validation)
+
+### Model with Data Augmentation
+- **Accuracy**: `47%` (Training), `46%` (Validation)
+- **Loss**: `1.7991` (Training), `1.8813` (Validation)
+
+### Model with Augmentor Library
+- **Accuracy**: `85%` (Training), `76%` (Validation)
+- **Loss**: `2.4290` (Training), `2.7418` (Validation)
+
+#### Final Results Comparison:
+
+| Model                   | Train Accuracy | Validation Accuracy | Train Loss | Validation Loss |
+|-------------------------|----------------|---------------------|------------|-----------------|
+| Baseline Model          | 85%            | 47%                 | 0.4162     | 2.6695          |
+| Model with Augmentation | 47%            | 46%                 | 1.7991     | 1.8813          |
+| Augmentor Library Model | 85%            | 76%                 | 2.4290     | 2.7418          |
 
 ## Technologies Used
 - TensorFlow - 2.10.1
