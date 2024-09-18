@@ -42,7 +42,7 @@ In this project, a CNN model was built with several variations and combinations.
 - **Flatten layer**: Converts the output of the pooling layer into a single long vector.
 - **Dense layer**: A fully connected layer with 512 neurons (ReLU activation) followed by a **softmax** layer for output classification with 9 neurons (one for each class).
 
-The model uses the **adam** optimizer, **sparse_categorical_crossentropy** as the loss function, and **accuracy** as the evaluation metric.
+Before training the CNN model, the dataset was split into **80% for training** and **20% for validation** to evaluate the model's performance during training. The model is optimized using the **Adam optimizer**, which is known for its efficiency in handling sparse gradients and adaptive learning rates. The **sparse_categorical_crossentropy** loss function was used because the problem is a multi-class classification task with mutually exclusive categories. Finally, the **accuracy** metric was selected to monitor how well the model correctly classifies the images during training and validation.
 
 ### Model Variations
 1. **Baseline Model**
